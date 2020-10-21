@@ -1,5 +1,5 @@
 //Create variables here
-var dog, happyDog, database, foodS, foodStock;
+var dog, happyDog, database, foodStock;
 
 var foodS = 5;
 
@@ -30,7 +30,10 @@ function setup() {
 function draw() {  
   background(46,139,87);
 
+  //foodS = 5;
+
   if(keyWentDown(UP_ARROW)){
+    //foodS = 5;
     writeStock(foodS);
     //dog.addImage("Happy-Dog", happyDogImage);
   }
@@ -50,11 +53,10 @@ function readStock(data){
 }
 
 function writeStock(x){
-
   if(x<=0){
     x=0;
   }else{
-    x=x-1;
+    x = x-1;
   }
 
   database.ref("/").update({
