@@ -9,7 +9,7 @@ function preload()
 {
   //load images here
   dogImage = loadImage("images/dogImg.png");
-  happyDogImage = loadImage("images/dogImg.png");
+  happyDogImage = loadImage("images/dogImg1.png");
 }
 
 function setup() {
@@ -18,9 +18,9 @@ function setup() {
   foodStock = database.ref('Food');
   foodStock.on("value", readStock);
   
-  var dog = createSprite(250,250,25,25);
-  dog.addImage("Dog", dogImage);
-  //dog.addImage("Happy-Dog", happyDogImage);
+  dog = createSprite(250,250,25,25);
+  dog.addImage(dogImage);
+  //dog.addImage(happyDogImage);
   dog.scale = 0.25;
 
   
@@ -32,11 +32,18 @@ function draw() {
 
   //foodS = 5;
 
-  if(keyWentDown(UP_ARROW)){
+  if(foodS > 0 && keyWentDown(UP_ARROW)){
     //foodS = 5;
     writeStock(foodS);
-    //dog.addImage("Happy-Dog", happyDogImage);
+    dog.addImage(happyDogImage);
+    textSize(25);
+    fill("white");
+    text("BARK!!", 120, 100);
   }
+  if(keyWentUp(UP_ARROW)){
+    dog.addImage(dogImage);
+  }
+
 
   drawSprites();
 
